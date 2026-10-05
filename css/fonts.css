@@ -1,0 +1,67 @@
+/* ============================================================
+   FONTS — self-hosted latin .woff2 + metric-matched fallbacks
+   Families: Outfit (headlines), Inter (body), JetBrains Mono (tech)
+   Variable files: only latin subset, weights actually used
+   ============================================================ */
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+/* Metric-matched system fallbacks — swap without layout shift */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica");
+  size-adjust: 107.64%;
+  ascent-override: 90%;
+  descent-override: 22.43%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Outfit Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica");
+  size-adjust: 105%;
+  ascent-override: 100%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Fallback";
+  src: local("Courier New"), local("Courier");
+  size-adjust: 84%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
+html,
+body,
+.font-body-lg,
+.font-body-md,
+.font-body-sm {
+  font-family: Inter, "Inter Fallback", system-ui, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-headline-xl,
+.font-headline-xl-mobile,
+.font-headline-lg,
+.font-headline-lg-mobile,
+.font-headline-md,
+.font-headline-sm,
+.font-title-md {
+  font-family: Outfit, "Outfit Fallback", Inter, "Inter Fallback", sans-serif !important;
+}
+
+code, pre,
+.font-tech-data,
+.font-label-caps,
+.font-badge-label {
+  font-family: "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, monospace !important;
+}

@@ -1,0 +1,65 @@
+/* ============================================================
+   DESIGN TOKENS — source of truth: DESIGN.md
+   ============================================================ */
+
+:root {
+  /* Primary & energetic accents */
+  --em-crimson: #C8102E;
+  --em-red: #E63946;
+  --em-red-tint: rgba(200, 16, 46, 0.15);
+  --em-red-glow: rgba(200, 16, 46, 0.4);
+
+  /* Structural neutrals & surfaces */
+  --em-void: #0B0F14;
+  --em-surface: #0e141c;
+  --em-charcoal: #121820;
+  --em-container-low: #161c24;
+  --em-container: #1a2028;
+  --em-container-high: #242a33;
+  --em-container-top: #2f353e;
+  --em-steel: #1B232E;
+  --em-slate: #252F3D;
+  --em-line: #333F50;
+
+  /* Light neutrals */
+  --em-white: #FFFFFF;
+  --em-gray: #F4F6F8;
+  --em-border-light: #E5E8EC;
+
+  /* Text */
+  --em-text: #dde3ee;
+  --em-text-muted: #bbc7dc;
+  --em-text-dim: #ac8887;
+  --em-text-accent: #e5bdbb;
+  --em-text-pink: #ffb3b1;
+
+  /* Scrollbar */
+  --scrollbar-thumb: var(--em-crimson);
+  --scrollbar-thumb-hover: #a00d24;
+  --scrollbar-track: var(--em-void);
+
+  /* Spacing (DESIGN.md) */
+  --sp-xs: 0.25rem;
+  --sp-sm: 0.5rem;
+  --sp-md: 1rem;
+  --sp-lg: 1.5rem;
+  --sp-xl: 2.5rem;
+  --gutter: 1.5rem;
+  --margin: 2rem;
+  --page-gutter: clamp(1rem, 2vw, 1.5rem);
+  --section-y: clamp(1.75rem, 4vw, 2.5rem);
+  --header-offset: 120px;
+
+  /* Radius — DESIGN.md zero-radius sharp geometry */
+  --radius: 0;
+
+  /* Shadows */
+  --shadow-precision: 0 8px 24px -4px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(51, 63, 80, 0.7);
+
+  /* Motion system — GPU-friendly, consistent easing */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.15, 1);
+  --duration-fast: 180ms;
+  --duration-med: 320ms;
+  --duration-slow: 700ms;
+}

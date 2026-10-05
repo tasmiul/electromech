@@ -1,0 +1,191 @@
+/* ============================================================
+   ELECTRIC THEME — brand crimson current / spark / arcs
+   Toggle: remove this stylesheet + js/electric.js
+   ============================================================ */
+
+.electric-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.55;
+}
+
+.electric-hero svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.electric-hero .arc {
+  fill: none;
+  stroke: var(--em-crimson);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.electric-hero .arc-soft {
+  stroke: var(--em-red);
+  stroke-width: 0.75;
+  opacity: 0.35;
+}
+
+.electric-hero .glow-dot {
+  fill: var(--em-red);
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes em-dash-flow {
+    to { stroke-dashoffset: -240; }
+  }
+  @keyframes em-pulse {
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.35); }
+  }
+  @keyframes em-spark-run {
+    0% { transform: translateX(-8%); opacity: 0; }
+    12% { opacity: 1; }
+    88% { opacity: 1; }
+    100% { transform: translateX(108%); opacity: 0; }
+  }
+  @keyframes em-flicker {
+    0%, 92%, 100% { opacity: 0; }
+    93% { opacity: 0.45; }
+    95% { opacity: 0; }
+    96.5% { opacity: 0.28; }
+    98% { opacity: 0; }
+  }
+
+  .electric-hero .arc {
+    stroke-dasharray: 18 28;
+    animation: em-dash-flow 4.8s linear infinite;
+  }
+  .electric-hero .arc-soft {
+    stroke-dasharray: 10 36;
+    animation: em-dash-flow 7.2s linear infinite reverse;
+  }
+  .electric-hero .glow-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: em-pulse 2.4s var(--ease-in-out) infinite;
+  }
+  .electric-hero .glow-dot:nth-child(odd) {
+    animation-delay: 0.6s;
+  }
+
+  .lightning-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 11;
+    background:
+      linear-gradient(115deg, transparent 40%, rgba(200, 16, 46, 0.08) 50%, transparent 60%);
+    animation: em-flicker 9s ease-in-out infinite;
+  }
+
+  .section-spark {
+    position: relative;
+  }
+  .section-spark::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--em-crimson) 22%,
+      var(--em-red) 50%,
+      var(--em-crimson) 78%,
+      transparent 100%
+    );
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .section-spark::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 18%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, var(--em-red), transparent);
+    opacity: 0;
+    pointer-events: none;
+    animation: em-spark-run 5.5s var(--ease-out) infinite;
+  }
+
+  .spark-line {
+    position: relative;
+    overflow: hidden;
+  }
+  .spark-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--em-crimson), var(--em-red), transparent);
+    transform: translateX(-120%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .spark-line:hover::before,
+  .spark-line:focus-within::before {
+    opacity: 1;
+    animation: em-spark-run 0.7s var(--ease-out) forwards;
+  }
+
+  .btn-pulse.electric-ready::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 0 rgba(230, 57, 70, 0);
+    pointer-events: none;
+    transition: box-shadow var(--duration-med) var(--ease-out);
+  }
+  .btn-pulse.electric-ready:hover::before,
+  .btn-pulse.electric-ready:focus-visible::before {
+    box-shadow: inset 0 0 12px rgba(230, 57, 70, 0.35);
+  }
+
+  .icon-spark {
+    position: relative;
+  }
+  .icon-spark::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 0;
+    box-shadow: 0 0 0 0 rgba(200, 16, 46, 0);
+    pointer-events: none;
+    animation: em-pulse 2.8s var(--ease-in-out) infinite;
+    opacity: 0.4;
+  }
+
+  .scroll-progress.electric {
+    box-shadow: 0 0 10px var(--em-red-glow), 0 0 18px rgba(230, 57, 70, 0.25);
+  }
+}
+
+@media (max-width: 767px) {
+  .electric-hero { opacity: 0.28; }
+  .electric-hero .glow-dot { display: none; }
+  .lightning-overlay { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .electric-hero,
+  .lightning-overlay { display: none !important; }
+  .section-spark::before,
+  .spark-line::before,
+  .icon-spark::after { animation: none !important; opacity: 0 !important; }
+}

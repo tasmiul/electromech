@@ -1,0 +1,199 @@
+/* ============================================================
+   BASE — reset, document, type scale, scrollbar, layout
+   ============================================================ */
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: var(--em-surface);
+    color: var(--em-text);
+    font-size: 15px;
+    line-height: 24px;
+  }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
+  overflow-y: scroll;
+  scrollbar-width: auto;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  max-width: 100%;
+}
+
+main {
+  flex: 1;
+  min-width: 0;
+}
+
+::selection {
+  background: var(--em-crimson);
+  color: #fff;
+}
+
+img, svg, video, canvas, iframe {
+  max-width: 100%;
+}
+
+iframe {
+  width: 100%;
+}
+
+p, .text-body-md, .text-body-sm, .text-body-lg {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+a[href^="mailto:"],
+a[href^="tel:"] {
+  overflow-wrap: anywhere;
+}
+
+/* ── Scrollbar (brand crimson) ── */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ── Scroll progress ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--em-crimson), var(--em-red));
+  z-index: 9999;
+  width: 0%;
+  transform-origin: left center;
+  box-shadow: 0 0 8px var(--em-red-glow);
+  pointer-events: none;
+}
+
+/* ── Geometry enforcement ── */
+[class*="rounded"] {
+  border-radius: var(--radius) !important;
+}
+button, a[class*="bg-primary-container"], a[class*="bg-[#c8102e]"] {
+  border-radius: var(--radius) !important;
+}
+[class*="shadow"] {
+  box-shadow: var(--shadow-precision) !important;
+}
+.bg-primary-container, [class*="bg-[#c8102e]"] {
+  background-color: var(--em-crimson) !important;
+}
+.border-surface-variant,
+.border-surface-container-high,
+.border-surface-container-highest {
+  border-color: var(--em-line) !important;
+}
+
+/* ── Page container ── */
+.page-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.max-w-7xl.mx-auto {
+  padding-inline: var(--page-gutter) !important;
+}
+
+main section[class*="px-margin-sm"][class*="lg:px-margin-lg"]:has(> .max-w-7xl.mx-auto) {
+  padding-inline: 0 !important;
+}
+
+/* Full-height heroes: svh/dvh to avoid mobile URL-bar jumps */
+.min-h-screen {
+  min-height: 100svh;
+}
+.min-h-\[92vh\] {
+  min-height: 92svh;
+  min-height: 92dvh;
+}
+.min-h-\[88vh\] {
+  min-height: 88svh;
+}
+
+/* Section vertical rhythm */
+section[class*="py-"],
+section[class*="pt-"],
+section[class*="pb-"],
+section[class*="py-space-"],
+section[class*="pt-space-"],
+section[class*="pb-space-"],
+section[class*="py-margin"],
+section[class*="pt-margin"],
+section[class*="pb-margin"] {
+  padding-top: var(--section-y) !important;
+  padding-bottom: var(--section-y) !important;
+}
+
+section.page-breadcrumb-section[class*="py-"],
+section.page-breadcrumb-section[class*="pt-"] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.page-breadcrumb-container {
+  padding-top: 2rem !important;
+  padding-bottom: 2.5rem !important;
+}
+.page-title-container {
+  padding-top: 0.75rem !important;
+  padding-bottom: 2.5rem !important;
+}
+.page-breadcrumb-row {
+  padding-top: 2rem !important;
+  padding-bottom: 0 !important;
+}
+
+.table-scroll-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+table {
+  max-width: 100%;
+}
